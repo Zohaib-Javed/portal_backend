@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Grade.init({
-    gradeNum: {type:DataTypes.INTEGER,allowNull:false}
+    gradeNum: {type:DataTypes.INTEGER,allowNull:false,unique:true}
   }, {
     sequelize,
     modelName: 'grade',

@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       gradeNum: {
+        unique:true,
         allowNull: false,
         type: Sequelize.INTEGER
       },

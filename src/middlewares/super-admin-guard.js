@@ -17,9 +17,9 @@ module.exports = async (req, res, next) => {
 		next();
 	} catch (error) {
 		console.log(error);
-		res.status(401).send({
+		res.status(403).send({
 			success: false,
-			message: 'Unauthorized'
+			message: 'Forbidden'
 		});
 	}
 };

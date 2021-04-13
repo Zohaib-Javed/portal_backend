@@ -1,9 +1,9 @@
 const { sendResponse,errorHandler} = require("../../middlewares");
 
-const createSuperAdmin = ({ UserService }) => async (req, res, next) => {
+const createUsers = ({ SuperAdminService }) => async (req, res, next) => {
   try {
-    let user = await UserService.createSuperAdmin(req.body)
-    console.log("create super admin controller : ",user);
+    let user = await SuperAdminService.createUsers(req.body)
+    console.log("Create Users controller : ",user);
 
     if (user && !user.code) {
       user = {
@@ -21,4 +21,4 @@ const createSuperAdmin = ({ UserService }) => async (req, res, next) => {
   }
 }
 
-module.exports = { createSuperAdmin };
+module.exports = { createUsers };

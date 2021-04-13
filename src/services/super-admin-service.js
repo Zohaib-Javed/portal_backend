@@ -1,4 +1,4 @@
-const { grade:Grade} = require('../models');
+const { grade:Grade,user:User} = require('../models');
 
 
 const createGrades = async (grade) => {
@@ -7,7 +7,12 @@ const createGrades = async (grade) => {
   return gradeRes;
 }
 
+const createUsers= async (user) => {
+  console.log("Create Users services : ",user);
+  return await User.create(user);
+}
 
 module.exports = {
   createGrades,
+  createUsers,
 }
