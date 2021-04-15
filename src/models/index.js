@@ -4,8 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const environment = require('dotenv').config();
-const env = environment.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'development';
 const config = require('../../config/database.json')[env];
 const db = {};
 
@@ -27,7 +26,6 @@ fs
   });
 
 Object.keys(db).forEach(modelName => {
-  console.log('[model-name] ',modelName);
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
