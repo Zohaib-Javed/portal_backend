@@ -3,7 +3,6 @@ const { sendResponse,errorHandler} = require("../../middlewares");
 const createSuperAdmin = ({ UserService }) => async (req, res, next) => {
   try {
     let user = await UserService.createSuperAdmin(req.body)
-    console.log("create super admin controller : ",user);
 
     if (user && !user.code) {
       user = {
@@ -17,7 +16,6 @@ const createSuperAdmin = ({ UserService }) => async (req, res, next) => {
   }
   catch (error) {
     errorHandler(error, req, res, next);
-    // res.status().json({ message: 'Resource not found' });
   }
 }
 

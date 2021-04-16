@@ -1,7 +1,6 @@
 const { sendResponse,errorHandler} = require("../../middlewares");
 
 const createGrades = ({ SuperAdminService }) => async (req, res, next) => {
-  console.log("grades controller : ",req.user);
   try {
     let grades = await SuperAdminService.createGrades(req.body)
     if (grades && !grades.code) {
