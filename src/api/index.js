@@ -11,7 +11,7 @@ const routersInit = () => {
     const router = express.Router();
     router.use(jwt());
     router.use('/user' ,user(services));
-    
+    console.log(".........")
     router.use('/super-admin' ,superAdminGuard ,superAdmin(services));
     router.use(errorHandler);
     return router;
