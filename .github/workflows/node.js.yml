@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [10.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,3 +28,12 @@ jobs:
     - name: Install dependencies
       run: npm install
     - run: npm run build --if-present
+    - name: Deploying on server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.PORTAL_HOST }}
+        username: ${{ secrets.PORTAL_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.PORTAL_PORT }}
+        script: |
+          ls
