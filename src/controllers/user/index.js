@@ -22,7 +22,7 @@ const superAdminDataValidation=(path)=>{
 				check('password', 'Password is missing.').exists(),
 				check('password','Password must atleast be 6 characters long').isLength({ min: 6 }),
 				check('role','Role is missing.').exists(),
-				check('role','Invalid role.').isIn(['admin','teacher','student']),
+				check('role','Invalid role.').isIn(['superAdmin']),
 			
 			];
 		default:
