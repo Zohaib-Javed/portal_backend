@@ -25,9 +25,13 @@ const addPayment=async(payment)=>{
   }
   else if(dues.dataValues.isPaid){
     return {code:400,message: "Dues already Paid"};
-  }else if(dues.dataValues.amount!==payment.amount){
-    return {code:400 ,message:"Payment amount is not equal to Dues"}
+  }else if(dues.dataValues.amount+dues.dataValues.fineAfterDueDate!==payment.amount){
+    return {code:400 ,message:"Payment amount is not equal to total Dues"}
   }
+  // else if(dues.dataValues.fineAfterDueDate){
+  //   if(dues.dataValues.fineAfterDueDate+dues.dataValues.amount!==payment.amount)
+  //     return {code:400 ,message:"Payment amount is not equal to total of fine and amount due"}
+  // }
   const paymentRes= await Payment.create(payment);
   if(paymentRes){
     const duesUpdate= await DuePayment.update({ isPaid: true }, {
