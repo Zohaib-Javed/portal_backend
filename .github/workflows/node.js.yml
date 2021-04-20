@@ -35,4 +35,4 @@ jobs:
         username: ${{ secrets.PORTAL_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          ls 
+          mkdir zoh 
