@@ -20,8 +20,15 @@ const errorHandler = (err, req, res, next) => {
 			} else {
 				return res.status(409).json({ message: 'Provided Data is not Unique.' });
 			}
+		}else if(err.errors[0].type==="notNull Violation"){
+			if (err.errors[0].message) {
+				return res.status(400).json({ message: err.errors[0].message });
+			} else {
+				return res.status(400).json({ message: 'Some provided data fields are empty.' });
+			}
 		}
 	}
+
 	return res.status(error.status || 500).json({
 		code: error.code || 500,
 		message: error.message || STATUS_CODES[error.status],

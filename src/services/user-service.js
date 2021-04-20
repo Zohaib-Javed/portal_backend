@@ -1,12 +1,11 @@
 const { user:User} = require('../models');
-var config=require('dotenv').config();
 var jwt=require('jsonwebtoken');
 
 
 const signIn = async ({ email, password }) => {
   const user = await User.findOne({ where: { email: email } });
   if (!user) {
-    return { code: 404, message: "user doesnt exist" }
+    return { code: 404, message: "User doesnt exist" }
   } else if (! await user.validPassword(user.password,password)) {
     return { code: 401, message: "Incorrect password" }
   }
