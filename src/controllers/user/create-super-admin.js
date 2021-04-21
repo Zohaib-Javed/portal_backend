@@ -1,3 +1,4 @@
+const { fileLogger } = require("../../helper");
 const { sendResponse,errorHandler} = require("../../middlewares");
 
 const createSuperAdmin = ({ UserService }) => async (req, res, next) => {
@@ -16,6 +17,8 @@ const createSuperAdmin = ({ UserService }) => async (req, res, next) => {
   }
   catch (error) {
     errorHandler(error, req, res, next);
+    fileLogger({error,fileName:"create-super-admin-controller"})
+
   }
 }
 

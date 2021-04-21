@@ -27,7 +27,8 @@
     "pg-promise": "^10.10.1",
     "rest-api-errors": "^1.2.4",
     "sequelize": "^6.6.2",
-    "ssh2": "^0.8.9"
+    "ssh2": "^0.8.9",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"

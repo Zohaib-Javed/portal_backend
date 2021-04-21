@@ -1,3 +1,4 @@
+const { fileLogger } = require("../../helper");
 const { sendResponse,errorHandler} = require("../../middlewares");
 
 const addDuePayment = ({ SuperAdminService }) => async (req, res, next) => {
@@ -17,6 +18,8 @@ const addDuePayment = ({ SuperAdminService }) => async (req, res, next) => {
   }
   catch (error) {
     errorHandler(error, req, res, next);
+    fileLogger({error,fileName:"add-due-payment-controller"})
+
   }
 }
 

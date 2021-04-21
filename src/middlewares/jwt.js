@@ -3,7 +3,6 @@ const {pathToRegexp} = require('path-to-regexp')
 
 
 const unprotected = [
-    
     pathToRegexp('/api/v1/user/sign-in'),
     pathToRegexp('/api/v1/user/create-super-admin'),
 ];

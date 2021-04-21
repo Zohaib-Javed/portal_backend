@@ -11,6 +11,8 @@ const createGrades = ({ SuperAdminService }) => async (req, res, next) => {
   }
   catch (error) {
     errorHandler(error, req, res, next);
+    fileLogger({error,fileName:"create-grades-controller"})
+
   }
 }
 

@@ -1,3 +1,4 @@
+const { fileLogger } = require("../../helper");
 const { sendResponse,errorHandler} = require("../../middlewares");
 
 const signIn = ({ UserService }) => async (req, res, next) => {
@@ -17,6 +18,7 @@ const signIn = ({ UserService }) => async (req, res, next) => {
     }
     catch (error) {
         errorHandler(error, req, res, next);
+        fileLogger({error,fileName:"sign-in-controller"})
     }
 }
 

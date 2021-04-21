@@ -17,7 +17,7 @@
     },
     "production": {
         "username": "phaedra",
-        "password": "alpha123",
+        "password": "password-@1A",
         "database": "portal",
         "host": "127.0.0.1",
         "logging": false,
