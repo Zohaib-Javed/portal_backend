@@ -44,4 +44,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORTAL_PORT }}
         script: |
-          cd /root/zohaib/portal_backend
+          cd /root/zohaib/portal_backend && npm i
