@@ -1,5 +1,5 @@
 const { grade:Grade,user:User,duePayment:DuePayment,payment:Payment} = require('../models');
-
+const bcrypt=require('bcrypt');
 
 const createGrades = async (grade) => {
   const gradeRes = await Grade.create(grade);
@@ -8,6 +8,7 @@ const createGrades = async (grade) => {
 
 const createUsers= async (user) => {
   return await User.create(user);
+
 }
 
 const addDuePayment=async(dues)=>{
@@ -28,10 +29,6 @@ const addPayment=async(payment)=>{
   }else if(dues.dataValues.amount+dues.dataValues.fineAfterDueDate!==payment.amount){
     return {code:400 ,message:"Payment amount is not equal to total Dues"}
   }
-  // else if(dues.dataValues.fineAfterDueDate){
-  //   if(dues.dataValues.fineAfterDueDate+dues.dataValues.amount!==payment.amount)
-  //     return {code:400 ,message:"Payment amount is not equal to total of fine and amount due"}
-  // }
   const paymentRes= await Payment.create(payment);
   if(paymentRes){
     const duesUpdate= await DuePayment.update({ isPaid: true }, {
