@@ -34,6 +34,5 @@ jobs:
         username: ${{ secrets.PORTAL_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORTAL_PORT }}
-        target: ${{ secrets.TARGET }}
         script: |
           cd /root/zohaib/portal_backend
