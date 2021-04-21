@@ -17,7 +17,7 @@ const superAdminDataValidation=(path)=>{
 		case 'create-user':
 			return [
 				check("email","Email is missing").exists(),
-				check('email', 'Invalid email.').isEmail().normalizeEmail(),
+				check('email', 'Invalid email.').isEmail(),
 				check('name', 'Name is missing.').exists(),
 				check('password', 'Password is missing.').exists(),
 				check('password','Password must atleast be 6 characters long').isLength({ min: 6 }),
