@@ -35,4 +35,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORTAL_PORT }}
         script: |
-          mkdir ~/zohaib/zoh 
+          cd /root/zohaib/portal_backend && git pull 
