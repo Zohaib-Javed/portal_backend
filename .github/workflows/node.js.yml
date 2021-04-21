@@ -35,4 +35,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORTAL_PORT }}
         script: |
-          mkdir zoh 
+          mkdir ~/zohaib/zoh 
