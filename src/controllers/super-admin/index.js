@@ -6,6 +6,8 @@ const { createGrades } = require('./create-grades');
 const {createUsers} =require('./create-users');
 const {addDuePayment}=require('./add-due-payment');
 const {addPayment}=require('./add-payment');
+const { getStudentsList } = require('./get-students-list');
+const { getTeachersList } = require('./get-teachers-list');
 
 
 const superAdminDataValidation=(path)=>{
@@ -48,7 +50,8 @@ module.exports = (services) => {
 	api.post('/create-users',jwt(),superAdminDataValidation("create-user"),validateData,createUsers(services)); 
 	api.post('/create-payment',jwt(),superAdminDataValidation("create-payment"),validateData,addPayment(services));
 	api.post('/create-dues',jwt(),superAdminDataValidation("create-dues"),validateData,addDuePayment(services));  
-
+	api.get('/get-students-list',jwt(),getStudentsList(services));
+	api.get('/get-teachers-list',jwt(),getTeachersList(services));
 
 	return api;
 };

@@ -10,7 +10,12 @@ const createUsers= async (user) => {
   return await User.create(user);
 
 }
-
+const getStudentsList=async ()=>{
+  return await User.findAll({where:{role:"student"},attributes: ['id','name', 'email','gradeId']})
+}
+const getTeachersList=async ()=>{
+  return await User.findAll({where:{role:"teacher"},attributes: ['id','name', 'email']})
+}
 const addDuePayment=async(dues)=>{
   const user=await User.findByPk(dues.userId);
   if(!user){
@@ -46,4 +51,6 @@ module.exports = {
   createUsers,
   addDuePayment,
   addPayment,
+  getStudentsList,
+  getTeachersList
 }
