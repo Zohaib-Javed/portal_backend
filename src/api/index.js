@@ -9,7 +9,6 @@ const { superAdminGuard } = require('../middlewares');
 
 const routersInit = () => {
     const router = express.Router();
-    router.use(jwt());
     router.use('/user' ,user(services));
     router.use('/super-admin' ,superAdminGuard ,superAdmin(services));
     router.use(errorHandler);

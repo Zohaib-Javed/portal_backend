@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { check } = require('express-validator');
-const {validateData}=require('../../middlewares');
+const {validateData, jwt}=require('../../middlewares');
 const { signIn } = require('./sign-in');
 const {createSuperAdmin}=require('./create-super-admin');
 
@@ -30,8 +30,8 @@ const superAdminDataValidation=(path)=>{
 		}
 }
 module.exports = (services) => {
-    router.post('/sign-in',superAdminDataValidation("sign-in"),validateData,signIn(services));  
-    router.post('/create-super-admin',superAdminDataValidation("create-super-admin"),validateData,createSuperAdmin(services)); 
+    router.post('/sign-in',jwt(),superAdminDataValidation("sign-in"),validateData,signIn(services));  
+    router.post('/create-super-admin',jwt(),superAdminDataValidation("create-super-admin"),validateData,createSuperAdmin(services)); 
 
     return router;
 };

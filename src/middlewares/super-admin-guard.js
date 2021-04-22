@@ -14,9 +14,23 @@ module.exports = async (req, res, next) => {
 		next();
 	} catch (error) {
 		console.log(error);
-		res.status(403).send({
-			success: false,
-			message: 'Forbidden'
-		});
+		if(error.message==="TOKEN NOT FOUND"){
+			res.status(401).send({
+				success: false,
+				message: 'Unauthorized'
+			});
+		}
+		else if(error.message==="User Is Not Super Admin"){
+			res.status(403).send({
+				success: false,
+				message: 'Forbidden'
+			});
+		}
+		else{
+			res.status(404).send({
+				success: false,
+				message: 'Not Found'
+			});
+		}
 	}
 };

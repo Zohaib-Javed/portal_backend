@@ -1,5 +1,5 @@
 const { Router: router } = require('express');
-const {validateData}=require('../../middlewares');
+const {validateData, jwt}=require('../../middlewares');
 const { check } = require('express-validator');
 
 const { createGrades } = require('./create-grades');
@@ -44,10 +44,10 @@ const superAdminDataValidation=(path)=>{
 module.exports = (services) => {
 	const api = router();
 
-	api.post('/create-grade',superAdminDataValidation("create-grade"),validateData,createGrades(services));   
-	api.post('/create-users',superAdminDataValidation("create-user"),validateData,createUsers(services)); 
-	api.post('/create-payment',superAdminDataValidation("create-payment"),validateData,addPayment(services));
-	api.post('/create-dues',superAdminDataValidation("create-dues"),validateData,addDuePayment(services));  
+	api.post('/create-grade',jwt(),superAdminDataValidation("create-grade"),validateData,createGrades(services));   
+	api.post('/create-users',jwt(),superAdminDataValidation("create-user"),validateData,createUsers(services)); 
+	api.post('/create-payment',jwt(),superAdminDataValidation("create-payment"),validateData,addPayment(services));
+	api.post('/create-dues',jwt(),superAdminDataValidation("create-dues"),validateData,addDuePayment(services));  
 
 
 	return api;
