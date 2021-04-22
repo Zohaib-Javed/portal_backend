@@ -8,7 +8,6 @@ const unprotected = [
 ];
 
 const jwt = () => {
-
     return expressJwt({ secret: process.env.SECRET_KEY ,algorithms: ['sha1', 'RS256', 'HS256']}).unless({
         path: unprotected
     });
