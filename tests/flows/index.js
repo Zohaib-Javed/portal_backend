@@ -5,6 +5,7 @@ const {createUserTest}=require('./create-users.test');
 const {createDuesTest}=require('./add-due-payment.test');
 const {createPaymentTest}=require('./add-payment.test');
 const { enrollStudentTest } = require("./enroll-student.test");
+const {getStudentsList}=require('./get-students-list.test');
 module.exports = {
   createSuperAdminTest,
   signInTest,
@@ -13,4 +14,5 @@ module.exports = {
   createDuesTest,
   createPaymentTest,
   enrollStudentTest,
+  getStudentsList,
 }

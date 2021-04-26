@@ -1,5 +1,5 @@
 require("dotenv").config();
-const {enrollStudentTest, createSuperAdminTest,signInTest, createGradeTest, createUserTest, createDuesTest,createPaymentTest } = require("./flows");
+const {getStudentsList,enrollStudentTest, createSuperAdminTest,signInTest, createGradeTest, createUserTest, createDuesTest,createPaymentTest } = require("./flows");
 const sessionStorage =require('sessionstorage');
 const runTests = async () => {
 	const createSuperAdminResponse=await createSuperAdminTest();
@@ -12,6 +12,8 @@ const runTests = async () => {
 	console.log("[CreateGradeResponse] : ",createGradeResponse);
 	const createUserResponse=await createUserTest({role:"student"});
 	console.log("[CreateUserResponse] : ",createUserResponse);
+	const getStudentsListResponse=await getStudentsList();
+	console.log("[GetStudentsListResponse] : ",getStudentsListResponse);
 	const createUserFailedResponse=await createUserTest({role:"random"});
 	console.log("[CreateUserFailedResponse] : ",createUserFailedResponse);
 	const enrollStudentResponse=await enrollStudentTest({gradeId:createGradeResponse.id,userId:createUserResponse[0].id})
@@ -22,6 +24,8 @@ const runTests = async () => {
 	console.log("[CreatePaymentResponse] : ",createPaymentResponse);
 	const  createPaymentResponseFailure=await createPaymentTest(createDuesResponse[3],{amount:1000});
 	console.log("[CreatePaymentResponseFailure] : ",createPaymentResponseFailure);
+	const createRandomUserResponse=await createUserTest();
+	console.log("[CreateRandomUserResponse] : ",createRandomUserResponse);
 }
 
 runTests();

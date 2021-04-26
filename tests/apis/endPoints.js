@@ -13,5 +13,5 @@ module.exports = {
     createDues:new endPoint("/super-admin/create-dues", "POST", true),
     createPayment:new endPoint("/super-admin/create-payment", "POST", true),
     enrollStudent:new endPoint("/super-admin/enroll-student", "POST", true),
-
+    getStudentsList:new endPoint("/super-admin/get-students-list", "GET", true),
 }

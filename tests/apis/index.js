@@ -9,4 +9,5 @@ module.exports.apis = {
     createDues:(data) => api(endPoints.createDues, data),
     createPayment:(data) => api(endPoints.createPayment, data),
     enrollStudent: (data) => api(endPoints.enrollStudent,data),
+    getStudentsList: (data) => api(endPoints.getStudentsList,data),
 }

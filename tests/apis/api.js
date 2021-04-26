@@ -28,7 +28,7 @@ const axiosPOST = async ({ address: route, data, guarded: isGuarded, testData })
 }
 
 const axiospost = async ({ address: route, data, guarded: isGuarded, testData }) => {
-    console.log('[LINK TO BE APPROACHED] post ', route);
+    // console.log('[LINK TO BE APPROACHED] post ', route);
     return Axios({
         url: route,
         method: 'post',
@@ -40,7 +40,7 @@ const axiospost = async ({ address: route, data, guarded: isGuarded, testData })
 }
 
 const axiosGet = async ({ address: route, data, guarded: isGuarded, testData }) => {
-    console.log('[LINK TO BE APPROACHED] GET', route + (data ? data : ""));
+    // console.log('[LINK TO BE APPROACHED] GET', route + (data ? data : ""));
     return await Axios.get(process.env.BASE_URL + route + (data ? data : ""), isGuarded ? {
         headers: {
             'Authorization': 'Bearer ' + sessionStorage.getItem("auth_token"),
