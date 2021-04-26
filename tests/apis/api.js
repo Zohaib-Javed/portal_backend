@@ -1,5 +1,5 @@
 const Axios = require("axios");
-
+const sessionStorage=require('sessionstorage');
 module.exports = (endPoint, data) => {
     endPoint.data = data;
     switch (endPoint.type) {
@@ -19,7 +19,7 @@ module.exports = (endPoint, data) => {
 }
 
 const axiosPOST = async ({ address: route, data, guarded: isGuarded, testData }) => {
-    console.log('[LINK TO BE APPROACHED] POST ', route);
+    // console.log('[LINK TO BE APPROACHED] POST ', route);
     return await Axios.post(process.env.BASE_URL + route, data, isGuarded ? {
         headers: {
             'Authorization': 'Bearer ' + sessionStorage.getItem("auth_token"),

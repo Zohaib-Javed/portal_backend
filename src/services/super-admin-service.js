@@ -10,12 +10,23 @@ const createUsers= async (user) => {
   return await User.create(user);
 
 }
+
 const getStudentsList=async ()=>{
   return await User.findAll({where:{role:"student"},attributes: ['id','name', 'email','gradeId']})
 }
+
 const getTeachersList=async ()=>{
   return await User.findAll({where:{role:"teacher"},attributes: ['id','name', 'email']})
 }
+
+const enrollStudent=async ({gradeId,id})=>{
+  const isUserUpdate=await User.update({gradeId},{where:{id}});
+  if(isUserUpdate[0])
+    return await User.findByPk(id,{attributes: ['id','name', 'email','gradeId']});
+  else
+    return { code: 400, message: "User Id is not found." }
+}
+
 const addDuePayment=async(dues)=>{
   const user=await User.findByPk(dues.userId);
   if(!user){
@@ -52,5 +63,6 @@ module.exports = {
   addDuePayment,
   addPayment,
   getStudentsList,
-  getTeachersList
+  getTeachersList,
+  enrollStudent,
 }

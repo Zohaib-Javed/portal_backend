@@ -30,6 +30,7 @@
     "pg-promise": "^10.10.1",
     "rest-api-errors": "^1.2.4",
     "sequelize": "^6.6.2",
+    "sessionstorage": "^0.1.0",
     "ssh2": "^0.8.9",
     "winston": "^3.3.3"
   },

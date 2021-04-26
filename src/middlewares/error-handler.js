@@ -4,8 +4,16 @@ const { STATUS_CODES } = require('http');
 const errorHandler = (err, req, res, next) => {
 	const error = (err.status === 401 ||
 		err instanceof APIError) ? err : new InternalServerError();
-	console.log(err);
+	console.log("....",err);
 	if (err.name === 'UnauthorizedError') {
+		if (err.message) {
+			return res.status(400).json({ message: err.message });
+		} else {
+			return res.status(400).json({ message: 'Foreign Key Voilation.' });
+		}
+
+	}
+	if (err.name === 'SequelizeForeignKeyConstraintError') {
 		if (err.message) {
 			return res.status(401).json({ message: err.message });
 		} else {

@@ -7,7 +7,8 @@ const createUsers = ({ SuperAdminService }) => async (req, res, next) => {
     if (user && !user.code) {
       user = {
         email: user.dataValues.email,
-        name: user.dataValues.name, 
+        name: user.dataValues.name,
+        id:user.dataValues.id, 
       }
       sendResponse(res, user);
     } else {

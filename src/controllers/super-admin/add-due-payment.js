@@ -10,6 +10,8 @@ const addDuePayment = ({ SuperAdminService }) => async (req, res, next) => {
         userId: dues.dataValues.userId, 
         dueDate:dues.dataValues.dueDate,
         isPaid:dues.dataValues.isPaid,
+        id:dues.dataValues.id,
+        fine:dues.dataValues.fineAfterDueDate?dues.dataValues.fineAfterDueDate:0
       }
       sendResponse(res, dues);
     } else {
